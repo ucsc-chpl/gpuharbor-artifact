@@ -20,4 +20,45 @@ Ideal stress parameters for seeing weak behaviors vary depending on the GPU bein
 
 ## Detailed Instructions
 
+While the web interface is easy to use and allowed us to collect data from dozens of GPUs, it is only one part of our extensive tooling that enabled this paper, as can be seen in Figure 2 in the paper. In this section, we run through litmus test generation, collecting data using the web interface and Android app, analyzing the results, and running our lock algorithm experiments.
+
+### Litmus Test Generation
+
+Our Litmus Generator tool can output both WGSL and SPIR-V shaders for use in the web interface and Android app respectively. The code is hosted at https://github.com/reeselevine/litmus-generator, but this artifact also includes a Docker image with the tool already installed. To use the Docker image, first install [Docker](https://www.docker.com/get-started/). Then, load the image:
+
+```
+docker load -i gpuharbor.tar
+```
+
+And confirm it was loaded by making sure it shows up in the list of images:
+
+```
+docker images
+```
+
+Then, run the image:
+
+```
+docker run --name gpuharbor -it gpuharbor-artifact
+```
+
+Navigate to the `litmus-generator` directory. To generate the message passing shader, and its results aggregation shader, run the following commands:
+
+For a WGSL shader:
+
+```
+python3 litmusgenerator.py --backend wgsl --gen_result_shader litmus-config/mp/message-passing.json
+```
+
+For a SPIR-V shader:
+
+```
+python3 litmusgenerator.py --backend vulkan --gen_result_shader litmus-config/mp/message-passing.json
+```
+
+The resulting shaders will be written to the `target` directory. For our paper, we then copied these shaders into the web interface/Android app source code to run them. 
+
+### Web Interface/Android App
+
+Using the web interface to explore/tune litmus tests was described in [Getting Started](#getting-started). However, we also include the source code for the website here, under the `webgpu-litmus` directory. The code is also hosted at https://github.com/reeselevine/webgpu-litmus. The web interface can be run locally by installing [Google Chrome Canary](https://www.google.com/chrome/canary/), following the instructions in the README to install Node.JS and NPM, and starting the app using the command `npm run dev`. This sets up a full local environment, including the server side code that collects results submitted from the frontend in a SQLite databse.
 
