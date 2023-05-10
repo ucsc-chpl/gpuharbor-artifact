@@ -84,7 +84,7 @@ The options are mapped to the paper as following:
 * `--webgpu-kmeans`: Table 4
 * `--bug-corr`: Section 5.1 correlation analysis
 
-Figures are stored as pdfs in the `figures` directory. To view them, first copy them out of the container by running this command outside the container:
+Figures are stored as pdfs in the `figures` directory. To view them, first copy them out of the container. For example (make sure to run this _outside_ the container):
 
 ```
 docker cp gpuharbor:/home/analysis/figures/webgpu-rates.pdf .
