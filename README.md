@@ -94,6 +94,23 @@ This copies the pdf into the current directory, where they can then be opened.
 
 There are two other scripts in the `analysis` directory. `insert.py` inserts JSON results (e.g. the results obtained from the Android app) into a specified database, while `analysis.py` computes a variety of statistics on results. `analysis.py` is called by the `figures.py` script to generate the images/tables, but feel free to play around with `analysis.py` to investigate the results in more detail.
 
-### Lock Algorithms
+### Lock Tests
 
-TODO
+The Android app used to test locking algorithms is available here as both a pre-built APK file for easy installation under `lock-tests/lock-test-app.apk` or as source code as a flutter project in [this repository](https://github.com/boingboomtschak/gpu_lock_tests_flutter/tree/issta-results).
+
+#### Building the app
+
+##### Requirements:
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/)
+- [Android Studio](https://developer.android.com/studio)
+
+First, after installing the Flutter SDK according to the instructions specific to your operating system, run `flutter doctor` and make sure there are no issues building for Android devices.
+
+Clone the `gpu_lock_test_flutter` repository, and from that path run `flutter build apk` to build the apk. If all goes well, it should be produced and the resulting APK file placed at `build/app/outputs/flutter-apk/apk-release.apk`.
+
+#### Running the app
+
+After downloading the .APK file onto an Android device, it can be opened and installed, where it should be named "gpu_lock_tests_flutter." 
+
+Opening the app, the top section can be used to configure the parameters (workgroups, workgroup size, lock attempts per thread, number of tests iterations). The red button on the bottom right with an arrow will run the tests - the app has to do some heavy testing, so it may freeze during this process and should be given time to execute. Eventually, the report will appear in the middle section of the screen, along with logs in the bottom section.
