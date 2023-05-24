@@ -60,7 +60,7 @@ The resulting shaders will be written to the `target` directory. For our paper, 
 
 ### Web Interface/Android App
 
-Using the web interface to explore/tune litmus tests was described in [Getting Started](#getting-started). However, we also include the source code for the website here, under the `webgpu-litmus` directory. The code is also hosted at https://github.com/reeselevine/webgpu-litmus. The web interface can be run locally by installing [Google Chrome Canary](https://www.google.com/chrome/canary/), following the instructions in the README to install Node.JS and NPM, and starting the app using the command `npm run dev`. This sets up a full local environment, including the server side code that collects results submitted from the frontend in a SQLite databse.
+Using the web interface to explore/tune litmus tests was described in [Getting Started](#getting-started). However, we also include the source code for the website here, under the `webgpu-litmus` directory. The web interface can be run locally by installing [Google Chrome Canary](https://www.google.com/chrome/canary/), following the instructions in the README to install Node.JS and NPM, and starting the app using the command `npm run dev`. This sets up a full local environment, including the server side code that collects results submitted from the frontend in a SQLite databse.
 
 The Android app source code is included in this artifact under the `Android-Vulkan-Memory-Model-Testing` directory. The app can be developed using Android Studio. We also include an APK, `app-release.apk`, which can be installed on an Android device (e.g. by emailing the apk to yourself and opening it to install it). In the app, navigate to the "Tuning/Conformance" tab. Under "Test Type", the "Explorer" tab allows one test to be run, similar to the the individual pages on the web interface. The "Tuning" tab allows tuning over multiple tests, while the "Tune/Conform" tab runs the experiments used in the paper with the selected tests.
 
@@ -96,7 +96,7 @@ There are two other scripts in the `analysis` directory. `insert.py` inserts JSO
 
 ### Lock Tests
 
-The Android app used to test locking algorithms is available here as both a pre-built APK file for easy installation under `lock-tests/lock-test-app.apk` or as source code as a flutter project in [this repository](https://github.com/boingboomtschak/gpu_lock_tests_flutter/tree/issta-results).
+The Android app used to test locking algorithms is available here as both a pre-built APK file for easy installation as `lock-test-app.apk` or as source code as a flutter project in the `gpu_lock_tests_flutter` directory.
 
 #### Building the app
 
@@ -107,7 +107,7 @@ The Android app used to test locking algorithms is available here as both a pre-
 
 First, after installing the Flutter SDK according to the instructions specific to your operating system, run `flutter doctor` and make sure there are no issues building for Android devices.
 
-Clone the `gpu_lock_test_flutter` repository, and from that path run `flutter build apk` to build the apk. If all goes well, it should be produced and the resulting APK file placed at `build/app/outputs/flutter-apk/apk-release.apk`.
+In the `gpu_lock_test_flutter` repository run `flutter build apk` to build the apk. If all goes well, it should be produced and the resulting APK file placed at `build/app/outputs/flutter-apk/apk-release.apk`.
 
 #### Running the app
 
